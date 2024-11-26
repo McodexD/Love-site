@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Go on a Date?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f8fa;
+            color: #333;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .question {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .button {
+            padding: 15px 25px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .button:hover {
+            transform: scale(1.1);
+        }
+        .yes {
+            background-color: #4caf50;
+            color: white;
+        }
+        .no {
+            background-color: #f44336;
+            color: white;
+        }
+        .emoji {
+            font-size: 5em;
+            margin-top: 20px;
+            transition: font-size 0.3s ease, transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will You Go on a Date with Me? ❤️</h1>
+    <p class="question">Choose wisely... 😊</p>
+    <div class="buttons">
+        <button class="button yes" onclick="acceptDate()">Yes, of course!</button>
+        <button class="button no" onclick="rejectDate()">No, sorry...</button>
+    </div>
+    <div class="emoji">😊</div>
+
+    <script>
+        let sadnessLevel = 0;
+
+        function acceptDate() {
+            alert("Yay! I knew you'd say yes! 🥳");
+            document.querySelector('.question').innerText = "Great! Let's plan our date. 💕";
+            document.querySelector('.buttons').style.display = "none";
+        }
+
+        function rejectDate() {
+            const emoji = document.querySelector('.emoji');
+            sadnessLevel++;
+            switch (sadnessLevel) {
+                case 1:
+                    emoji.innerText = "😔";
+                    break;
+                case 2:
+                    emoji.innerText = "😢";
+                    break;
+                case 3:
+                    emoji.innerText = "😭";
+                    break;
+                case 4:
+                    emoji.innerText = "💔";
+                    document.querySelector('.question').innerText = "Are you really sure? 💔";
+                    break;
+                default:
+                    emoji.innerText = "💀";
+                    document.querySelector('.question').innerText = "I can't believe this... Are you 100% sure? 😭";
+                    emoji.style.fontSize = "7em";
+                    emoji.style.transform = "rotate(10deg)";
+            }
+        }
+    </script>
+</body>
+</html>
